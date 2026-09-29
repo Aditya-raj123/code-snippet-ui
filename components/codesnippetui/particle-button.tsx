@@ -1,13 +1,18 @@
 "use client";
 
-import { useState, useRef, type RefObject } from "react";
+import {
+    useRef,
+    useState,
+    type ButtonHTMLAttributes,
+    type RefObject,
+} from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import type { ButtonProps } from "@/components/ui/button";
 import { MousePointerClick } from "lucide-react";
 
-interface ParticleButtonProps extends ButtonProps {
+interface ParticleButtonProps
+    extends ButtonHTMLAttributes<HTMLButtonElement> {
     onSuccess?: () => void;
     successDuration?: number;
 }
@@ -15,9 +20,10 @@ interface ParticleButtonProps extends ButtonProps {
 function SuccessParticles({
     buttonRef,
 }: {
-    buttonRef: React.RefObject<HTMLButtonElement>;
+    buttonRef: RefObject<HTMLButtonElement | null>;
 }) {
     const rect = buttonRef.current?.getBoundingClientRect();
+
     if (!rect) return null;
 
     const centerX = rect.left + rect.width / 2;
@@ -28,8 +34,11 @@ function SuccessParticles({
             {[...Array(6)].map((_, i) => (
                 <motion.div
                     key={i}
-                    className="fixed w-1 h-1 bg-black dark:bg-white rounded-full"
-                    style={{ left: centerX, top: centerY }}
+                    className="fixed h-1 w-1 rounded-full bg-black dark:bg-white"
+                    style={{
+                        left: centerX,
+                        top: centerY,
+                    }}
                     initial={{
                         scale: 0,
                         x: 0,
@@ -37,7 +46,11 @@ function SuccessParticles({
                     }}
                     animate={{
                         scale: [0, 1, 0],
-                        x: [0, (i % 2 ? 1 : -1) * (Math.random() * 50 + 20)],
+                        x: [
+                            0,
+                            (i % 2 ? 1 : -1) *
+                                (Math.random() * 50 + 20),
+                        ],
                         y: [0, -Math.random() * 50 - 20],
                     }}
                     transition={{
@@ -62,8 +75,12 @@ export default function ParticleButton({
     const [showParticles, setShowParticles] = useState(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        onClick?.(e);
+
         setShowParticles(true);
+
+        onSuccess?.();
 
         setTimeout(() => {
             setShowParticles(false);
@@ -74,21 +91,24 @@ export default function ParticleButton({
         <>
             {showParticles && (
                 <SuccessParticles
-                    buttonRef={buttonRef as RefObject<HTMLButtonElement>}
+                    buttonRef={
+                        buttonRef as RefObject<HTMLButtonElement | null>
+                    }
                 />
             )}
+
             <Button
                 ref={buttonRef}
                 onClick={handleClick}
                 className={cn(
-                    "relative",
+                    "relative transition-transform duration-100",
                     showParticles && "scale-95",
-                    "transition-transform duration-100",
                     className
                 )}
                 {...props}
             >
                 {children}
+
                 <MousePointerClick className="h-4 w-4" />
             </Button>
         </>

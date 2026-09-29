@@ -4,9 +4,11 @@ const withMDX = createMDX();
 
 const nextConfig = {
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+
     outputFileTracingIncludes: {
         "/**": ["components/codesnippetui/**/*"],
     },
+
     async headers() {
         return [
             {
@@ -20,6 +22,7 @@ const nextConfig = {
             },
         ];
     },
+
     images: {
         remotePatterns: [
             {
@@ -27,10 +30,8 @@ const nextConfig = {
             },
         ],
     },
+
     reactStrictMode: true,
-    eslint: {
-        ignoreDuringBuilds: true,
-      },
 };
 
 export default withMDX(nextConfig);
