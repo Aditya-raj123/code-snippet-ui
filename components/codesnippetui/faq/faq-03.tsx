@@ -79,7 +79,7 @@ function Faq03() {
                         </p>
                     </div>
 
-                    <Accordion type="single" collapsible className="space-y-4">
+                    <Accordion className="space-y-4">
                         {faqs.map((faq, index) => (
                             <FAQItem key={index} {...faq} />
                         ))}

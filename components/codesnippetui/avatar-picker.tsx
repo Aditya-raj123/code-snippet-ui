@@ -95,10 +95,10 @@ const avatars: Avatar[] = [
                     width="36"
                     height="36"
                 >
-                    <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                    <rect width="36" height="36" rx="72" fill="#FFFFFF" />
                 </mask>
                 <g mask="url(#:R4mrttb:)">
-                    <rect width="36" height="36" fill="#ff7d10"></rect>
+                    <rect width="36" height="36" fill="#ff7d10" />
                     <rect
                         x="0"
                         y="0"
@@ -158,7 +158,7 @@ const avatars: Avatar[] = [
                     width="36"
                     height="36"
                 >
-                    <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                    <rect width="36" height="36" rx="72" fill="#FFFFFF" />
                 </mask>
                 <g mask="url(#:r11c:)">
                     <rect width="36" height="36" fill="#0a0310" />
@@ -172,7 +172,10 @@ const avatars: Avatar[] = [
                         rx="36"
                     />
                     <g transform="translate(-3 3.5) rotate(7 18 18)">
-                        <path d="M13,21 a1,0.75 0 0,0 10,0" fill="#FFFFFF" />
+                        <path
+                            d="M13,21 a1,0.75 0 0,0 10,0"
+                            fill="#FFFFFF"
+                        />
                         <rect
                             x="12"
                             y="14"
@@ -216,10 +219,10 @@ const avatars: Avatar[] = [
                     width="36"
                     height="36"
                 >
-                    <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                    <rect width="36" height="36" rx="72" fill="#FFFFFF" />
                 </mask>
                 <g mask="url(#:r1gg:)">
-                    <rect width="36" height="36" fill="#d8fcb3"></rect>
+                    <rect width="36" height="36" fill="#d8fcb3" />
                     <rect
                         x="0"
                         y="0"
@@ -228,14 +231,14 @@ const avatars: Avatar[] = [
                         transform="translate(9 -5) rotate(219 18 18) scale(1)"
                         fill="#89fcb3"
                         rx="6"
-                    ></rect>
+                    />
                     <g transform="translate(4.5 -4) rotate(9 18 18)">
                         <path
                             d="M15 19c2 1 4 1 6 0"
                             stroke="#000000"
                             fill="none"
                             strokeLinecap="round"
-                        ></path>
+                        />
                         <rect
                             x="10"
                             y="14"
@@ -244,7 +247,7 @@ const avatars: Avatar[] = [
                             rx="1"
                             stroke="none"
                             fill="#000000"
-                        ></rect>
+                        />
                         <rect
                             x="24"
                             y="14"
@@ -253,7 +256,7 @@ const avatars: Avatar[] = [
                             rx="1"
                             stroke="none"
                             fill="#000000"
-                        ></rect>
+                        />
                     </g>
                 </g>
             </svg>
@@ -262,7 +265,6 @@ const avatars: Avatar[] = [
     },
 ];
 
-// Add these animation variants at the top level
 const mainAvatarVariants = {
     initial: {
         y: 20,
@@ -272,7 +274,7 @@ const mainAvatarVariants = {
         y: 0,
         opacity: 1,
         transition: {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 200,
             damping: 20,
         },
@@ -306,7 +308,7 @@ const pickerVariants = {
             y: 0,
             opacity: 1,
             transition: {
-                type: "spring",
+                type: "spring" as const,
                 stiffness: 300,
                 damping: 20,
             },
@@ -323,7 +325,7 @@ const selectedVariants = {
         opacity: 1,
         rotate: 0,
         transition: {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 200,
             damping: 15,
         },
@@ -342,7 +344,7 @@ export default function AvatarPicker() {
     const [rotationCount, setRotationCount] = useState(0);
 
     const handleAvatarSelect = (avatar: Avatar) => {
-        setRotationCount((prev) => prev + 1080); // Add 3 rotations each time
+        setRotationCount((prev) => prev + 1080);
         setSelectedAvatar(avatar);
     };
 
@@ -350,7 +352,6 @@ export default function AvatarPicker() {
         <motion.div initial="initial" animate="animate" className="w-full">
             <Card className="w-full max-w-md mx-auto overflow-hidden bg-gradient-to-b from-background to-muted/30">
                 <CardContent className="p-0">
-                    {/* Background header */}
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{
@@ -358,7 +359,7 @@ export default function AvatarPicker() {
                             height: "8rem",
                             transition: {
                                 height: {
-                                    type: "spring",
+                                    type: "spring" as const,
                                     stiffness: 100,
                                     damping: 20,
                                 },
@@ -368,7 +369,6 @@ export default function AvatarPicker() {
                     />
 
                     <div className="px-8 pb-8 -mt-16">
-                        {/* Main avatar display */}
                         <motion.div
                             className="relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 bg-background flex items-center justify-center"
                             variants={mainAvatarVariants}
@@ -381,14 +381,13 @@ export default function AvatarPicker() {
                                 }}
                                 transition={{
                                     duration: 0.8,
-                                    ease: [0.4, 0, 0.2, 1], // Custom easing for a nice acceleration and deceleration
+                                    ease: [0.4, 0, 0.2, 1] as const,
                                 }}
                             >
                                 {selectedAvatar.svg}
                             </motion.div>
                         </motion.div>
 
-                        {/* Username display */}
                         <motion.div
                             className="text-center mt-4"
                             variants={pickerVariants.item}
@@ -401,6 +400,7 @@ export default function AvatarPicker() {
                             >
                                 Me
                             </motion.h2>
+
                             <motion.p
                                 className="text-muted-foreground text-sm"
                                 initial={{ opacity: 0 }}
@@ -411,7 +411,6 @@ export default function AvatarPicker() {
                             </motion.p>
                         </motion.div>
 
-                        {/* Avatar selection */}
                         <motion.div
                             className="mt-6"
                             variants={pickerVariants.container}
@@ -447,6 +446,7 @@ export default function AvatarPicker() {
                                         <div className="w-full h-full flex items-center justify-center">
                                             {avatar.svg}
                                         </div>
+
                                         {selectedAvatar.id === avatar.id && (
                                             <motion.div
                                                 className="absolute inset-0 bg-primary/20 ring-2 ring-primary ring-offset-2 ring-offset-background rounded-full"

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
     Select,
@@ -11,7 +13,7 @@ import {
     Image,
     Sun,
     User,
-    Monitor
+    Monitor,
 } from "lucide-react";
 
 interface VideoSettings {
@@ -32,29 +34,42 @@ export const SettingsGeneration = ({
     onSettingsChange,
 }: SettingsProps) => {
     return (
-        <div className="space-y-4 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/50">
+        <div className="space-y-4 rounded-xl bg-zinc-50 p-4 dark:bg-zinc-800/50">
             {/* Style Select */}
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <Palette className="w-4 h-4 text-zinc-500" />
+                    <Palette className="h-4 w-4 text-zinc-500" />
                     <span className="text-sm text-zinc-500">Style</span>
                 </div>
+
                 <Select
                     value={settings.style}
-                    onValueChange={(value) =>
-                        onSettingsChange({ ...settings, style: value })
-                    }
+                    onValueChange={(value) => {
+                        if (value === null) return;
+
+                        onSettingsChange({
+                            ...settings,
+                            style: value,
+                        });
+                    }}
                 >
-                    <SelectTrigger className="w-[140px] h-8 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
+                    <SelectTrigger className="h-8 w-[140px] border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
                         <SelectValue />
                     </SelectTrigger>
+
                     <SelectContent>
                         <SelectItem value="professional">
                             Professional
                         </SelectItem>
-                        <SelectItem value="artistic">Artistic</SelectItem>
-                        <SelectItem value="casual">Casual</SelectItem>
-                        <SelectItem value="vintage">Vintage</SelectItem>
+                        <SelectItem value="artistic">
+                            Artistic
+                        </SelectItem>
+                        <SelectItem value="casual">
+                            Casual
+                        </SelectItem>
+                        <SelectItem value="vintage">
+                            Vintage
+                        </SelectItem>
                     </SelectContent>
                 </Select>
             </div>
@@ -62,26 +77,40 @@ export const SettingsGeneration = ({
             {/* Background Select */}
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <Image className="w-4 h-4 text-zinc-500" />
-                    <span className="text-sm text-zinc-500">Background</span>
+                    <Image className="h-4 w-4 text-zinc-500" />
+                    <span className="text-sm text-zinc-500">
+                        Background
+                    </span>
                 </div>
+
                 <Select
                     value={settings.backgroundColor}
-                    onValueChange={(value) =>
+                    onValueChange={(value) => {
+                        if (value === null) return;
+
                         onSettingsChange({
                             ...settings,
                             backgroundColor: value,
-                        })
-                    }
+                        });
+                    }}
                 >
-                    <SelectTrigger className="w-[140px] h-8 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
+                    <SelectTrigger className="h-8 w-[140px] border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
                         <SelectValue />
                     </SelectTrigger>
+
                     <SelectContent>
-                        <SelectItem value="studio">Studio</SelectItem>
-                        <SelectItem value="gradient">Gradient</SelectItem>
-                        <SelectItem value="solid">Solid Color</SelectItem>
-                        <SelectItem value="transparent">Transparent</SelectItem>
+                        <SelectItem value="studio">
+                            Studio
+                        </SelectItem>
+                        <SelectItem value="gradient">
+                            Gradient
+                        </SelectItem>
+                        <SelectItem value="solid">
+                            Solid Color
+                        </SelectItem>
+                        <SelectItem value="transparent">
+                            Transparent
+                        </SelectItem>
                     </SelectContent>
                 </Select>
             </div>
@@ -89,23 +118,40 @@ export const SettingsGeneration = ({
             {/* Lighting Select */}
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <Sun className="w-4 h-4 text-zinc-500" />
-                    <span className="text-sm text-zinc-500">Lighting</span>
+                    <Sun className="h-4 w-4 text-zinc-500" />
+                    <span className="text-sm text-zinc-500">
+                        Lighting
+                    </span>
                 </div>
+
                 <Select
                     value={settings.lighting}
-                    onValueChange={(value) =>
-                        onSettingsChange({ ...settings, lighting: value })
-                    }
+                    onValueChange={(value) => {
+                        if (value === null) return;
+
+                        onSettingsChange({
+                            ...settings,
+                            lighting: value,
+                        });
+                    }}
                 >
-                    <SelectTrigger className="w-[140px] h-8 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
+                    <SelectTrigger className="h-8 w-[140px] border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
                         <SelectValue />
                     </SelectTrigger>
+
                     <SelectContent>
-                        <SelectItem value="soft">Soft</SelectItem>
-                        <SelectItem value="dramatic">Dramatic</SelectItem>
-                        <SelectItem value="natural">Natural</SelectItem>
-                        <SelectItem value="studio">Studio</SelectItem>
+                        <SelectItem value="soft">
+                            Soft
+                        </SelectItem>
+                        <SelectItem value="dramatic">
+                            Dramatic
+                        </SelectItem>
+                        <SelectItem value="natural">
+                            Natural
+                        </SelectItem>
+                        <SelectItem value="studio">
+                            Studio
+                        </SelectItem>
                     </SelectContent>
                 </Select>
             </div>
@@ -113,33 +159,51 @@ export const SettingsGeneration = ({
             {/* Pose Select */}
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-zinc-500" />
+                    <User className="h-4 w-4 text-zinc-500" />
                     <span className="text-sm text-zinc-500">Pose</span>
                 </div>
+
                 <Select
                     value={settings.pose}
-                    onValueChange={(value) =>
-                        onSettingsChange({ ...settings, pose: value })
-                    }
+                    onValueChange={(value) => {
+                        if (value === null) return;
+
+                        onSettingsChange({
+                            ...settings,
+                            pose: value,
+                        });
+                    }}
                 >
-                    <SelectTrigger className="w-[140px] h-8 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
+                    <SelectTrigger className="h-8 w-[140px] border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
                         <SelectValue />
                     </SelectTrigger>
+
                     <SelectContent>
-                        <SelectItem value="headshot">Headshot</SelectItem>
-                        <SelectItem value="half-body">Half Body</SelectItem>
-                        <SelectItem value="full-body">Full Body</SelectItem>
-                        <SelectItem value="profile">Profile</SelectItem>
+                        <SelectItem value="headshot">
+                            Headshot
+                        </SelectItem>
+                        <SelectItem value="half-body">
+                            Half Body
+                        </SelectItem>
+                        <SelectItem value="full-body">
+                            Full Body
+                        </SelectItem>
+                        <SelectItem value="profile">
+                            Profile
+                        </SelectItem>
                     </SelectContent>
                 </Select>
             </div>
 
-            {/* Quality Select */}
+            {/* Quality */}
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <Monitor className="w-4 h-4 text-zinc-500" />
-                    <span className="text-sm text-zinc-500">Quality</span>
+                    <Monitor className="h-4 w-4 text-zinc-500" />
+                    <span className="text-sm text-zinc-500">
+                        Quality
+                    </span>
                 </div>
+
                 <span className="text-sm text-zinc-900 dark:text-zinc-100">
                     720p
                 </span>
