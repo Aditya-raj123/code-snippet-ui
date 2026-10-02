@@ -1,41 +1,67 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeSnippetUI
 
-## Getting Started
+A collection of beautiful, reusable UI components and code snippets built with modern web technologies.
 
-First, run the development server:
+## 🚀 Live Demo
+
+**[Visit CodeSnippetUI](https://code-snippet-ui-q29n.vercel.app/)**
+
+## ✨ Features
+
+- 🎨 Modern and beautiful UI components
+- 📱 Responsive design
+- 🌙 Dark and light mode
+- ⚡ Built with Next.js
+- 🧩 Reusable components
+- 📋 Easy-to-copy code snippets
+- 🎬 Smooth animations and interactions
+- 📚 Component documentation
+
+## 🛠️ Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Fumadocs
+- Motion
+- Lucide Icons
+
+## 💻 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Aditya-raj123/code-snippet-ui.git
+cd code-snippet-ui
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## 🌐 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This project is deployed on Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Live Website:** https://code-snippet-ui-q29n.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# code-snippet-ui
-CodeSnippetUI is a modern collection of beautiful, reusable UI components and code snippets built with Next.js, TypeScript, Tailwind CSS, and Fumadocs. It provides developers with ready-to-use components, interactive previews, and easy-to-copy code for building modern web applications.
->>>>>>> f06acdc928621726666ad68614886c43edb1d721
+This project is available for learning and development purposes.
